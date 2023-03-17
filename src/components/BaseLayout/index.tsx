@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
+
 import Header from "src/components/Header";
+import styleClasses from "src/components/BaseLayout/styles.module.scss";
 
 interface BaseLayoutProps {
   children: ReactNode;
@@ -7,11 +9,14 @@ interface BaseLayoutProps {
 
 const BaseLayout = ({ children }: BaseLayoutProps) => {
   return (
-    <div>
+    <>
       <Header />
-      {children}
-      <footer>Footer</footer>
-    </div>
+      <main className={styleClasses.main}>{children}</main>
+      <footer className={styleClasses.footer}>
+        контакты адреса туда сюда внизу каждой страницы +375336910060 москва дом
+        2 улица 3
+      </footer>
+    </>
   );
 };
 
