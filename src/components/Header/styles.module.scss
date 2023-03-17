@@ -1,0 +1,72 @@
+@import "src/static/colors/colors.scss";
+
+.header {
+  color: #fff;
+}
+
+.toolbar {
+  height: 225px;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $black;
+}
+
+.heading {
+  font-family: PlexSans, sans-serif;
+  font-size: 64px;
+  line-height: 98px;
+  text-align: center;
+}
+
+.search {
+  margin-left: 80px;
+  display: flex;
+  align-items: center;
+  gap: 23px;
+}
+
+.searchInput {
+  width: 598px;
+  padding: 5px 0 5px 40px;
+  border: 0;
+  border-radius: 20px;
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 49px;
+  color: $grey;
+}
+
+.navbar {
+  display: flex;
+  gap: 54px;
+}
+
+.categories {
+  height: 110px;
+  padding: 0 135px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $dark-grey;
+}
+
+.category {
+  margin: 0;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  font-family: Inika, sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 41px;
+  color: #fff;
+  text-decoration: none;
+
+  &:hover {
+    transition: 0.5s;
+    color: #fff;
+    border-color: #fff;
+  }
+}
