@@ -7,9 +7,21 @@ import styleClasses from "src/components/Header/styles.module.scss";
 const Navbar = () => {
   return (
     <nav className={styleClasses.navbar}>
-      <IconButton imageUrl={heart} imageAlt="Favourite" />
-      <IconButton imageUrl={cart} imageAlt="Cart" />
-      <IconButton imageUrl={profile} imageAlt="Profile" />
+      <IconButton
+        imageUrl={heart}
+        imageAlt="Favourite"
+        imageClassName={styleClasses.navIcon}
+      />
+      <IconButton
+        imageUrl={cart}
+        imageAlt="Cart"
+        imageClassName={styleClasses.navIcon}
+      />
+      <IconButton
+        imageUrl={profile}
+        imageAlt="Profile"
+        imageClassName={styleClasses.navIcon}
+      />
     </nav>
   );
 };

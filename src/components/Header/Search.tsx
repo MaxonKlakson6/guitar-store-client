@@ -12,7 +12,11 @@ const Search = () => {
         placeholder="Поиск"
         className={styleClasses.searchInput}
       />
-      <IconButton imageUrl={magnifier} imageAlt="Search button" />
+      <IconButton
+        imageUrl={magnifier}
+        imageAlt="Search button"
+        imageClassName={styleClasses.searchIcon}
+      />
     </div>
   );
 };
