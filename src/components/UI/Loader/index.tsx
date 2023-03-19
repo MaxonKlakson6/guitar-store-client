@@ -7,7 +7,7 @@ interface LoaderProps {
   children: ReactNode;
   isLoading: boolean;
 }
-// TODO: set loader in the middle of the page and create product interface
+
 const Loader = ({ children, isLoading }: LoaderProps) => {
   return (
     <>
