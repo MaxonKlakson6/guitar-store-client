@@ -11,7 +11,6 @@ const StoreContainer = () => {
 
   const { data: goods = getAllGoodsDefaultValue, isLoading } =
     useGetAllGoodsQuery();
-  console.log(goods);
 
   return (
     <Loader isLoading={isLoading}>

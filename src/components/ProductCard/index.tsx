@@ -1,5 +1,6 @@
 import { Card } from "react-bootstrap";
 
+import Tooltip from "src/components/UI/Tooltip";
 import IconButton from "src/components/UI/IconButton";
 import heartIcon from "src/static/icons/heart.png";
 import cartIcon from "src/static/icons/cart.png";
@@ -22,9 +23,11 @@ const ProductCard = ({ productName, price, image }: ProductCardProps) => {
         imageClassName={styleClasses.favouriteIcon}
       />
       <Card.Body>
-        <Card.Title className={styleClasses.cardTitle}>
-          {productName}
-        </Card.Title>
+        <Tooltip position="top" innerText={productName}>
+          <Card.Title className={styleClasses.cardTitle}>
+            {productName}
+          </Card.Title>
+        </Tooltip>
         <Card.Text className={styleClasses.cardPrice}>{price} б.р</Card.Text>
         <IconButton
           imageUrl={cartIcon}
