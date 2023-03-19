@@ -1,0 +1,89 @@
+.footer {
+  padding: 42px 93px 25px;
+  color: #fff;
+  background-color: #4b4b4b;
+}
+
+.upperSide {
+  padding-bottom: 40px;
+  display: flex;
+  gap: 100px;
+  border-bottom: 2px solid #000;
+}
+
+.logo {
+  width: 140px;
+}
+
+.title {
+  max-width: 281px;
+  margin: 0;
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+}
+
+.bottomSide {
+  margin-top: 13px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.links {
+  margin-top: 27px;
+}
+
+.linkWrapper {
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+.socialIcon {
+  width: 35px;
+}
+
+.link {
+  margin-left: 8px;
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 49px;
+  color: #fff;
+  text-decoration: none;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.contacts {
+  max-width: 398px;
+}
+
+.groupTitle {
+  margin-bottom: 4px;
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 55px;
+}
+
+.contact {
+  display: block;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36px;
+
+  &:not(:last-child) {
+    margin-bottom: 25px;
+  }
+}
+
+.about {
+  max-width: 430px;
+  margin: 0;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36px;
+}
