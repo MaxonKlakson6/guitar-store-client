@@ -9,3 +9,12 @@ export interface Guitar {
   color: string;
   image: string;
 }
+
+export interface Accessory {
+  id: number;
+  vendorCode: number;
+  name: string;
+  price: number;
+  description: string;
+  image: string;
+}

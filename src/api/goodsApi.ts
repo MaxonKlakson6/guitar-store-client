@@ -1,13 +1,13 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 
 import { baseQuery } from "src/api/baseQuery";
-import { Guitar } from "src/types/products";
+import { GetAllGoodsResponse } from "src/pages/Store/types/storeResponses";
 
 export const goodsApi = createApi({
   reducerPath: "goods",
   baseQuery,
   endpoints: (builder) => ({
-    getAllGoods: builder.query<Guitar[], void>({
+    getAllGoods: builder.query<GetAllGoodsResponse, void>({
       query: () => ({
         url: "/goods",
       }),
