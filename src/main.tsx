@@ -2,20 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import BaseLayout from "src/components/BaseLayout";
 import Router from "src/router";
-import { store } from "src/store";
+import { store, persistore } from "src/store";
 import "src/index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <BaseLayout>
-          <Router />
-        </BaseLayout>
+        <PersistGate persistor={persistore}>
+          <BaseLayout>
+            <Router />
+          </BaseLayout>
+        </PersistGate>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
