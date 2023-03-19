@@ -6,13 +6,13 @@ import { useGetAllGoodsQuery } from "src/api/goodsApi";
 
 const StoreContainer = () => {
   const [params] = useSearchParams();
-  const textToDisplay = params.get("category") || "All";
+  const category = params.get("category") || "All";
 
   const { data: goods = [], isLoading } = useGetAllGoodsQuery();
 
   return (
     <Loader isLoading={isLoading}>
-      <StoreLayout />
+      <StoreLayout products={goods} />
     </Loader>
   );
 };

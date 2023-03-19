@@ -1,0 +1,58 @@
+.card {
+  max-width: fit-content;
+  height: 393px;
+  border: 0;
+  border-radius: 15px;
+  background-color: #d9d9d9;
+}
+
+.cardImage {
+  width: 281px;
+  height: 262px;
+  object-fit: cover;
+  padding: 18px 18px 0;
+}
+
+.cardTitle {
+  width: 211px;
+  max-height: 72px;
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  white-space: pre-wrap;
+}
+
+.cardPrice {
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.favouriteButton {
+  position: absolute;
+  top: 19px;
+  right: 21px;
+}
+
+.favouriteIcon {
+  -webkit-filter: invert(100%);
+  width: 35px;
+}
+
+.addCartButton {
+  padding: 8px;
+  position: absolute;
+  bottom: 23px;
+  right: 5px;
+  border-radius: 10px;
+  background-color: #f81c1c;
+}
+
+.cartIcon {
+  -webkit-filter: invert(100%);
+  width: 35px;
+}

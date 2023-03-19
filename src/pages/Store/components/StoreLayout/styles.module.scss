@@ -1,0 +1,16 @@
+.wrapper {
+  padding: 25px 62px 25px 29px;
+  display: flex;
+  gap: 40px;
+}
+
+.filterHolder {
+  width: 353px;
+}
+
+.goodsHolder {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  row-gap: 73px;
+}
