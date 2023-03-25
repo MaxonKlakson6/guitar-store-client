@@ -1,11 +1,11 @@
 .footer {
-  padding: 42px 93px 25px;
+  padding: 14px 93px 20px;
   color: #fff;
   background-color: #4b4b4b;
 }
 
 .upperSide {
-  padding-bottom: 40px;
+  padding-bottom: 10px;
   display: flex;
   gap: 100px;
   border-bottom: 2px solid #000;
@@ -20,11 +20,11 @@
   margin: 0;
   font-family: PlexSans, sans-serif;
   font-weight: 700;
-  font-size: 48px;
+  font-size: 36px;
 }
 
 .bottomSide {
-  margin-top: 13px;
+  margin-top: 9px;
   display: flex;
   justify-content: space-between;
 }
@@ -40,15 +40,15 @@
 }
 
 .socialIcon {
-  width: 35px;
+  width: 28px;
 }
 
 .link {
   margin-left: 8px;
   font-family: PlexSans, sans-serif;
   font-weight: 700;
-  font-size: 24px;
-  line-height: 49px;
+  font-size: 20px;
+  line-height: 30px;
   color: #fff;
   text-decoration: none;
 
@@ -58,32 +58,33 @@
 }
 
 .contacts {
-  max-width: 398px;
+  max-width: 270px;
 }
 
 .groupTitle {
   margin-bottom: 4px;
   font-family: PlexSans, sans-serif;
   font-weight: 700;
-  font-size: 36px;
-  line-height: 55px;
+  font-size: 24px;
+  line-height: 36px;
 }
 
 .contact {
   display: block;
   font-weight: 400;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 15px;
+  line-height: 23px;
 
   &:not(:last-child) {
-    margin-bottom: 25px;
+    margin-bottom: 16px;
   }
 }
 
 .about {
-  max-width: 430px;
+  max-width: 290px;
   margin: 0;
+  margin-right: 174px;
   font-weight: 400;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 15px;
+  line-height: 23px;
 }
