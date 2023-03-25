@@ -17,33 +17,33 @@ const Categories = () => {
       </Link>
       <CategoryTab
         label="Джаз бас"
-        linkTo={`${ROUTE_NAMES.STORE_WITH_CATEGORY}jazz-bass`}
+        linkTo={`${ROUTE_NAMES.STORE_WITH_CATEGORY}джаз бас`}
         choosen={choosenTab}
-        tabName="jazz-bass"
+        tabName="джаз бас"
       />
       <CategoryTab
         label="Пресижн бас"
-        linkTo={`${ROUTE_NAMES.STORE_WITH_CATEGORY}precision-bass`}
+        linkTo={`${ROUTE_NAMES.STORE_WITH_CATEGORY}пресижн бас`}
         choosen={choosenTab}
-        tabName="precision-bass"
+        tabName="пресижн бас"
       />
       <CategoryTab
         label="Безладовая бас-гитара"
-        linkTo={`${ROUTE_NAMES.STORE_WITH_CATEGORY}fretless`}
+        linkTo={`${ROUTE_NAMES.STORE_WITH_CATEGORY}безлодовый бас`}
         choosen={choosenTab}
-        tabName="fretless"
+        tabName="безлодовый бас"
       />
       <CategoryTab
         label="Полуакустическая бас-гитара"
-        linkTo={`${ROUTE_NAMES.STORE_WITH_CATEGORY}semi-acoustic`}
+        linkTo={`${ROUTE_NAMES.STORE_WITH_CATEGORY}полуакустический бас`}
         choosen={choosenTab}
-        tabName="semi-acoustic"
+        tabName="полуакустический бас"
       />
       <CategoryTab
         label="Аксессуары"
-        linkTo={`${ROUTE_NAMES.STORE_WITH_CATEGORY}accessories`}
+        linkTo={`${ROUTE_NAMES.STORE_WITH_CATEGORY}аксессуары`}
         choosen={choosenTab}
-        tabName="accessories"
+        tabName="аксессуары"
       />
     </div>
   );

@@ -2,15 +2,21 @@ import { useSearchParams } from "react-router-dom";
 
 import Loader from "src/components/UI/Loader";
 import StoreLayout from "src/pages/Store/components/StoreLayout";
-import { useGetAllGoodsQuery } from "src/api/goodsApi";
+import { useLazyGetAllGoodsQuery } from "src/api/goodsApi";
 import { getAllGoodsDefaultValue } from "src/constants/responseDefaultValues";
+import { useEffect } from "react";
 
 const StoreContainer = () => {
   const [params] = useSearchParams();
-  const category = params.get("category") || "All";
+  const category = params.get("category") || "all";
 
-  const { data: goods = getAllGoodsDefaultValue, isLoading } =
-    useGetAllGoodsQuery();
+  const [loadGoods, { data: goods = getAllGoodsDefaultValue, isLoading }] =
+    useLazyGetAllGoodsQuery();
+  console.log(isLoading);
+
+  useEffect(() => {
+    loadGoods(category);
+  }, [category]);
 
   return (
     <Loader isLoading={isLoading}>

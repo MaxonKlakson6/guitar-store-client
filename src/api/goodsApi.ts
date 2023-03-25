@@ -7,12 +7,12 @@ export const goodsApi = createApi({
   reducerPath: "goods",
   baseQuery,
   endpoints: (builder) => ({
-    getAllGoods: builder.query<GetAllGoodsResponse, void>({
-      query: () => ({
-        url: "/goods",
+    getAllGoods: builder.query<GetAllGoodsResponse, string>({
+      query: (category) => ({
+        url: `/goods?category=${category}`,
       }),
     }),
   }),
 });
 
-export const { useGetAllGoodsQuery } = goodsApi;
+export const { useLazyGetAllGoodsQuery } = goodsApi;
