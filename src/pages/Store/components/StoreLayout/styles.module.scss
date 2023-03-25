@@ -9,8 +9,9 @@
 }
 
 .goodsHolder {
-  width: 100%;
+  width: fit-content;
   display: grid;
   grid-template-columns: repeat(4, auto);
+  column-gap: 52px;
   row-gap: 73px;
 }
