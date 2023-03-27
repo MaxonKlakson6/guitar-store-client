@@ -1,3 +1,4 @@
+import Filter from "src/pages/Store/components/Filter";
 import ProductCard from "src/components/ProductCard";
 import { GetAllGoodsResponse } from "src/pages/Store/types/storeResponses";
 import styleClasses from "src/pages/Store/components/StoreLayout/styles.module.scss";
@@ -9,7 +10,7 @@ interface StoreLayoutProps {
 const StoreLayout = ({ products }: StoreLayoutProps) => {
   return (
     <div className={styleClasses.wrapper}>
-      <div className={styleClasses.filterHolder}></div>
+      <Filter />
       <div className={styleClasses.goodsHolder}>
         {products.guitars.map((product) => (
           <ProductCard

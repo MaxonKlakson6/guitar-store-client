@@ -6,7 +6,7 @@ import styleClasses from "src/components/Header/styles.module.scss";
 const Toolbar = () => {
   return (
     <div className={styleClasses.toolbar}>
-      <img src={logo} alt="Logo" />
+      <img src={logo} alt="Logo" className={styleClasses.logo} />
       <div>
         <h1 className={styleClasses.heading}>BassMarketplace</h1>
         <Search />
