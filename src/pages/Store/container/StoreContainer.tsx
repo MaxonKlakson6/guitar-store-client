@@ -12,7 +12,6 @@ const StoreContainer = () => {
 
   const [loadGoods, { data: goods = getAllGoodsDefaultValue, isLoading }] =
     useLazyGetAllGoodsQuery();
-  console.log(isLoading);
 
   useEffect(() => {
     loadGoods(category);

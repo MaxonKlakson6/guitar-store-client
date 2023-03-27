@@ -7,8 +7,8 @@
 }
 
 .cardImage {
-  width: 281px;
-  height: 262px;
+  max-width: 281px;
+  max-height: 262px;
   object-fit: cover;
   padding: 18px 18px 0;
 }
