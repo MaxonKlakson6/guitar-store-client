@@ -1,7 +1,7 @@
 .filter {
   width: 353px;
-  height: 400px;
-  padding: 0 18px;
+  padding: 0 18px 39px;
+  align-self: flex-start;
   background-color: #d9d9d9;
 }
 
@@ -14,4 +14,106 @@
   line-height: 41px;
   color: #7a7878;
   border-bottom: 1px solid #000;
+}
+
+.sortBlock {
+  padding: 30px 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.radio {
+  font-family: Inika, sans-serif;
+  font-size: 20px;
+  color: #000;
+
+  & input {
+    border: 2px solid #1c1b1f;
+    background-color: inherit;
+
+    &:focus {
+      border: 2px solid #1c1b1f;
+      box-shadow: none;
+    }
+
+    &:checked {
+      position: relative;
+      border: 2px solid #1c1b1f;
+      box-shadow: none;
+      background-image: none;
+      background-color: #fff;
+
+      &::before {
+        content: "";
+        width: 90%;
+        height: 90%;
+        position: absolute;
+        top: calc(50% - 7px);
+        left: calc(50% - 7px);
+        border-radius: 50%;
+        background-color: black;
+      }
+    }
+  }
+}
+
+.filterBlock {
+  padding: 10px 0 0 32px;
+  &:not(:last-child) {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #000;
+  }
+}
+
+.filterTitle {
+  font-family: Inika, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.priceRangeBlock {
+  display: flex;
+  gap: 35px;
+  font-size: 32px;
+  color: #a6a6a6;
+}
+
+.priceInput {
+  width: 76px;
+  padding: 10px 0 10px 12px;
+  font-size: 15px;
+  border: 0;
+  outline: 0;
+  border-radius: 10px;
+}
+
+.checkBoxWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+}
+
+.checkBox {
+  font-family: Inika, sans-serif;
+  font-size: 20px;
+  color: #000;
+
+  & input[type="checkbox"] {
+    background-color: inherit;
+    border: 2px solid #1c1b1f;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:checked {
+      border: 0;
+      background-image: url("../../../../static/icons/check_box.png");
+    }
+  }
+}
+
+.stringsQuantityWrapper {
+  display: flex;
+  gap: 50px;
 }
