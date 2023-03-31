@@ -22,7 +22,7 @@ const ProductCard = ({ productName, price, image }: ProductCardProps) => {
         buttonClassName={styleClasses.favouriteButton}
         imageClassName={styleClasses.favouriteIcon}
       />
-      <Card.Body>
+      <Card.Body className={styleClasses.cardBody}>
         <Tooltip position="top" innerText={productName}>
           <Card.Title className={styleClasses.cardTitle}>
             {productName}

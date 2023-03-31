@@ -13,20 +13,27 @@
   padding: 18px 18px 0;
 }
 
+.cardBody {
+  display: flex;
+  flex-direction: column;
+}
+
 .cardTitle {
   width: 211px;
-  max-height: 72px;
+  max-height: 48px;
+  flex-grow: 1;
   font-family: PlexSans, sans-serif;
   font-weight: 700;
   font-size: 20px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   white-space: pre-wrap;
 }
 
 .cardPrice {
+  margin: 0;
   font-family: PlexSans, sans-serif;
   font-weight: 700;
   font-size: 24px;
