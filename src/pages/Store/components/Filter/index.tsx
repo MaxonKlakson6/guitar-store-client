@@ -1,12 +1,59 @@
 import { ChangeEvent, useState } from "react";
 import { Form } from "react-bootstrap";
+
+import {
+  colors,
+  materials,
+  stringQuantity,
+} from "src/constants/filterInitialValues";
+import { SortValues, CheckBox } from "src/types/filterTypes";
 import styleClasses from "src/pages/Store/components/Filter/styles.module.scss";
 
-const Filter = () => {
-  const [sortBy, setSortBy] = useState("");
+interface CheckBoxes {
+  material: CheckBox[];
+  stringQuantity: CheckBox[];
+  color: CheckBox[];
+}
 
-  const handleCheckChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSortBy(event.target.value);
+const Filter = () => {
+  const [sortValue, setSortValue] = useState<SortValues>("DESC");
+  const [checkBoxes, setCheckBoxes] = useState<CheckBoxes>({
+    material: materials,
+    stringQuantity,
+    color: colors,
+  });
+  const [priceRange, setPriceRange] = useState({
+    min: "",
+    max: "",
+  });
+
+  const handleChangeCheckBoxes = (
+    checkBoxGrupName: keyof CheckBoxes,
+    index: number
+  ) => {
+    const checkBoxGroupCopy = [...checkBoxes[checkBoxGrupName]];
+    const { name, checked } = checkBoxGroupCopy[index];
+
+    checkBoxGroupCopy.splice(index, 1, { name, checked: !checked });
+
+    setCheckBoxes({ ...checkBoxes, [checkBoxGrupName]: checkBoxGroupCopy });
+  };
+
+  const handleChangePriceRange = (event: ChangeEvent<HTMLInputElement>) => {
+    const reg = new RegExp("^[0-9]+$");
+    const { value, name } = event.target;
+
+    if (value.match(reg) || value.length === 0) {
+      setPriceRange({
+        ...priceRange,
+        [name]: value,
+      });
+    }
+  };
+
+  const handleSortValueChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.target.value as SortValues;
+    setSortValue(inputValue);
   };
 
   return (
@@ -18,19 +65,19 @@ const Filter = () => {
             name="expensive"
             type="radio"
             label="Дорогие выше"
-            value="дорогие"
-            checked={sortBy === "дорогие"}
+            value="DESC"
+            checked={sortValue === "DESC"}
             className={styleClasses.radio}
-            onChange={handleCheckChange}
+            onChange={handleSortValueChange}
           />
           <Form.Check
             name="cheap"
             type="radio"
             label="Дешевые выше"
-            value="дешевые"
-            checked={sortBy === "дешевые"}
+            value="ASC"
+            checked={sortValue === "ASC"}
             className={styleClasses.radio}
-            onChange={handleCheckChange}
+            onChange={handleSortValueChange}
           />
         </div>
         <h3 className={styleClasses.title}>Фильтры товаров</h3>
@@ -40,16 +87,22 @@ const Filter = () => {
             <div>
               <input
                 type="text"
-                className={styleClasses.priceInput}
                 placeholder="мин"
+                name="min"
+                value={priceRange.min}
+                className={styleClasses.priceInput}
+                onChange={handleChangePriceRange}
               />
               <span>-br</span>
             </div>
             <div>
               <input
                 type="text"
-                className={styleClasses.priceInput}
                 placeholder="макс"
+                name="max"
+                value={priceRange.max}
+                className={styleClasses.priceInput}
+                onChange={handleChangePriceRange}
               />
               <span>-br</span>
             </div>
@@ -58,106 +111,46 @@ const Filter = () => {
         <div className={styleClasses.filterBlock}>
           <h4 className={styleClasses.filterTitle}>Материал</h4>
           <div className={styleClasses.checkBoxWrapper}>
-            <Form.Check
-              type="checkbox"
-              label="Агатис"
-              className={styleClasses.checkBox}
-            />
-            <Form.Check
-              type="checkbox"
-              label="Вяз"
-              className={styleClasses.checkBox}
-            />
-            <Form.Check
-              type="checkbox"
-              label="Кедр"
-              className={styleClasses.checkBox}
-            />
-            <Form.Check
-              type="checkbox"
-              label="Клён"
-              className={styleClasses.checkBox}
-            />
-            <Form.Check
-              type="checkbox"
-              label="Нато"
-              className={styleClasses.checkBox}
-            />
-            <Form.Check
-              type="checkbox"
-              label="Маханоги"
-              className={styleClasses.checkBox}
-            />
-            <Form.Check
-              type="checkbox"
-              label="Ольха"
-              className={styleClasses.checkBox}
-            />
-            <Form.Check
-              type="checkbox"
-              label="Сосна"
-              className={styleClasses.checkBox}
-            />
-            <Form.Check
-              type="checkbox"
-              label="Тополь"
-              className={styleClasses.checkBox}
-            />
+            {checkBoxes.material.map(({ name, checked }, index) => (
+              <Form.Check
+                key={name}
+                type="checkbox"
+                label={name}
+                checked={checked}
+                className={styleClasses.checkBox}
+                onChange={() => handleChangeCheckBoxes("material", index)}
+              />
+            ))}
           </div>
         </div>
         <div className={styleClasses.filterBlock}>
           <h4 className={styleClasses.filterTitle}>Количество струн</h4>
           <div className={styleClasses.stringsQuantityWrapper}>
-            <Form.Check
-              type="checkbox"
-              label="4"
-              className={styleClasses.checkBox}
-            />
-            <Form.Check
-              type="checkbox"
-              label="5"
-              className={styleClasses.checkBox}
-            />
-            <Form.Check
-              type="checkbox"
-              label="6"
-              className={styleClasses.checkBox}
-            />
+            {checkBoxes.stringQuantity.map(({ name, checked }, index) => (
+              <Form.Check
+                key={name}
+                type="checkbox"
+                label={name}
+                checked={checked}
+                className={styleClasses.checkBox}
+                onChange={() => handleChangeCheckBoxes("stringQuantity", index)}
+              />
+            ))}
           </div>
         </div>
         <div className={styleClasses.filterBlock}>
           <h4 className={styleClasses.filterTitle}>Цвет</h4>
           <div className={styleClasses.checkBoxWrapper}>
-            <Form.Check
-              type="checkbox"
-              label="Бежевый"
-              className={styleClasses.checkBox}
-            />
-            <Form.Check
-              type="checkbox"
-              label="Белый"
-              className={styleClasses.checkBox}
-            />
-            <Form.Check
-              type="checkbox"
-              label="Черный"
-              className={styleClasses.checkBox}
-            />
-            <Form.Check
-              type="checkbox"
-              label="Красный"
-              className={styleClasses.checkBox}
-            />
-            <Form.Check
-              type="checkbox"
-              label="Оранжевый"
-              className={styleClasses.checkBox}
-            />
-            <Form.Check
-              type="checkbox"
-              label="Голубой"
-              className={styleClasses.checkBox}
-            />
+            {checkBoxes.color.map(({ name, checked }, index) => (
+              <Form.Check
+                key={name}
+                type="checkbox"
+                label={name}
+                checked={checked}
+                className={styleClasses.checkBox}
+                onChange={() => handleChangeCheckBoxes("color", index)}
+              />
+            ))}
           </div>
         </div>
       </Form>
