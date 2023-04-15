@@ -1,16 +1,19 @@
 import Filter from "src/pages/Store/components/Filter";
 import ProductCard from "src/components/ProductCard";
 import { GetAllGoodsResponse } from "src/pages/Store/types/storeResponses";
+import { GetGoodsRequest } from "src/pages/Store/types/storeRequests";
 import styleClasses from "src/pages/Store/components/StoreLayout/styles.module.scss";
 
 interface StoreLayoutProps {
+  category: string;
   products: GetAllGoodsResponse;
+  loadGoods: (requestBody: GetGoodsRequest) => void;
 }
 
-const StoreLayout = ({ products }: StoreLayoutProps) => {
+const StoreLayout = ({ category, products, loadGoods }: StoreLayoutProps) => {
   return (
     <div className={styleClasses.wrapper}>
-      <Filter />
+      <Filter category={category} loadGoods={loadGoods} />
       <div className={styleClasses.goodsHolder}>
         {products.guitars.map((product) => (
           <ProductCard

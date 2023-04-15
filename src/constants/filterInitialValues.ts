@@ -1,4 +1,4 @@
-import { CheckBox } from "src/types/filterTypes";
+import { CheckBox } from "src/pages/Store/types/filterTypes";
 
 export const materials: CheckBox[] = [
   {
@@ -77,6 +77,17 @@ export const colors: CheckBox[] = [
   },
   {
     name: "Голубой",
+    checked: false,
+  },
+];
+
+export const type: CheckBox[] = [
+  {
+    name: "Комбоусилители",
+    checked: false,
+  },
+  {
+    name: "Педали эффектов",
     checked: false,
   },
 ];

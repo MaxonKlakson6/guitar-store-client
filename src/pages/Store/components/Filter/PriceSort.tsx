@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react";
 import { Form } from "react-bootstrap";
 
-import { SortValues } from "src/types/filterTypes";
+import { SortValues } from "src/pages/Store/types/filterTypes";
 import styleClasses from "src/pages/Store/components/Filter/styles.module.scss";
 
 interface PriceSortProps {

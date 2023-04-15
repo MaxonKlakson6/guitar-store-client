@@ -4,22 +4,21 @@ import Loader from "src/components/UI/Loader";
 import StoreLayout from "src/pages/Store/components/StoreLayout";
 import { useLazyGetAllGoodsQuery } from "src/api/goodsApi";
 import { getAllGoodsDefaultValue } from "src/constants/responseDefaultValues";
-import { useEffect } from "react";
+import { GetGoodsRequest } from "src/pages/Store/types/storeRequests";
 
 const StoreContainer = () => {
   const [params] = useSearchParams();
   const category = params.get("category") || "all";
-
-  const [loadGoods, { data: goods = getAllGoodsDefaultValue, isLoading }] =
+  const [trigger, { data: goods = getAllGoodsDefaultValue, isLoading }] =
     useLazyGetAllGoodsQuery();
 
-  useEffect(() => {
-    loadGoods(category);
-  }, [category]);
+  const loadGoods = (requestBody: GetGoodsRequest) => {
+    trigger(requestBody);
+  };
 
   return (
     <Loader isLoading={isLoading}>
-      <StoreLayout products={goods} />
+      <StoreLayout category={category} products={goods} loadGoods={loadGoods} />
     </Loader>
   );
 };
