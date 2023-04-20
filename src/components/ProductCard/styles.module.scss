@@ -1,5 +1,5 @@
 .card {
-  max-width: fit-content;
+  max-width: 320px;
   height: 393px;
   border: 0;
   border-radius: 15px;
@@ -7,8 +7,8 @@
 }
 
 .cardImage {
-  max-width: 281px;
-  max-height: 262px;
+  width: 281px;
+  height: 262px;
   object-fit: cover;
   padding: 18px 18px 0;
 }
@@ -20,11 +20,11 @@
 
 .cardTitle {
   width: 211px;
-  max-height: 48px;
+  max-height: 40px;
   flex-grow: 1;
   font-family: PlexSans, sans-serif;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 16px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -36,7 +36,7 @@
   margin: 0;
   font-family: PlexSans, sans-serif;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .favouriteButton {
