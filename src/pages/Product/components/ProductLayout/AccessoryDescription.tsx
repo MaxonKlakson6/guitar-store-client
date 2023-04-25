@@ -2,7 +2,7 @@ import stylesClasses from "src/pages/Product/components/ProductLayout/styles.mod
 
 interface AccessoryDescriptionProps {
   description: string;
-  price: number;
+  price: string;
 }
 
 const AccessoryDescription = ({

@@ -40,7 +40,9 @@ const ProductCard = ({
               {productName}
             </Card.Title>
           </Tooltip>
-          <Card.Text className={styleClasses.cardPrice}>{price} б.р</Card.Text>
+          <Card.Text className={styleClasses.cardPrice}>
+            {price.toFixed(2)} б.р
+          </Card.Text>
           <IconButton
             imageUrl={cartIcon}
             imageAlt="cart"

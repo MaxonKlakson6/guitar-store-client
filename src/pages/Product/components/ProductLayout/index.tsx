@@ -27,12 +27,12 @@ const ProductLayout = ({ product }: ProductLayoutProps) => {
                 color={product.color}
                 material={product.material}
                 stringQuantity={product.stringQuantity}
-                price={product.price}
+                price={product.price.toFixed(2)}
               />
             ) : (
               <AccessoryDescription
                 description={product.description}
-                price={product.price}
+                price={product.price.toFixed(2)}
               />
             )}
           </div>

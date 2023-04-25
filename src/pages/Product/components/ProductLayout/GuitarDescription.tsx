@@ -4,7 +4,7 @@ interface GuitarDescriptionProps {
   color: string;
   material: string;
   stringQuantity: number;
-  price: number;
+  price: string;
 }
 
 const GuitarDescription = ({
