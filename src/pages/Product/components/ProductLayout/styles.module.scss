@@ -1,0 +1,124 @@
+.productWrapper {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 55px 16px 50px;
+  display: flex;
+  gap: 170px;
+}
+
+.productImage {
+  width: 450px;
+  align-self: flex-start;
+}
+
+.productTitle {
+  max-width: 667px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.productMainBlock {
+  display: flex;
+  gap: 132px;
+}
+
+.productCharacteristics {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.characteristic {
+  max-width: 464px;
+  margin-bottom: 0;
+  font-family: PlexSans, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.allCharacteristics {
+  margin-bottom: 0;
+  font-family: PlexSans, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: #585757;
+}
+
+.productPrice {
+  margin-bottom: 0;
+  font-family: PlexSans, sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+}
+
+.characteristicName {
+  font-weight: 700;
+  color: #000;
+}
+
+.vendorCode {
+  margin-bottom: 80px;
+  font-family: PlexSans, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #949191;
+}
+
+.quickBuyButton {
+  max-width: 207px;
+  padding: 13px 30px;
+  border: 1px solid #fff;
+  border-radius: 15px;
+  background-color: #f02323;
+  color: #fff;
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+
+  &:hover {
+    transition: 0.5s;
+    background-color: #fff;
+    color: #f02323;
+    border-color: #f02323;
+  }
+}
+
+.belowButtonsBlock {
+  margin-top: 92px;
+}
+
+.belowButton {
+  padding: 4px;
+  border: 0;
+  border-radius: 4px;
+  background-color: #fff;
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #656060;
+
+  &:not(:last-child) {
+    margin-right: 110px;
+  }
+
+  &:hover {
+    transition: 0.5s;
+    background-color: #f02323;
+    color: #fff;
+
+    img {
+      transition: 0.5s;
+      -webkit-filter: invert(0);
+    }
+  }
+}
+
+.buttonInnerIcon {
+  width: 34px;
+  height: 34px;
+  -webkit-filter: invert(100%);
+}

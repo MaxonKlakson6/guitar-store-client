@@ -5,7 +5,7 @@ export interface Guitar {
   name: string;
   price: number;
   material: string;
-  stringQuantiry: number;
+  stringQuantity: number;
   color: string;
   image: string;
 }
@@ -18,3 +18,5 @@ export interface Accessory {
   description: string;
   image: string;
 }
+
+export type Product = Guitar | Accessory;

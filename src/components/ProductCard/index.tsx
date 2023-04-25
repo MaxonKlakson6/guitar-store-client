@@ -8,20 +8,20 @@ import cartIcon from "src/static/icons/cart.png";
 import styleClasses from "src/components/ProductCard/styles.module.scss";
 
 interface ProductCardProps {
-  productId: number;
+  vendorCode: number;
   productName: string;
   price: number;
   image: string;
 }
 
 const ProductCard = ({
-  productId,
+  vendorCode,
   productName,
   price,
   image,
 }: ProductCardProps) => {
   return (
-    <Link className={styleClasses.cardLink} to={`/product/${productId}`}>
+    <Link className={styleClasses.cardLink} to={`/product/${vendorCode}`}>
       <Card className={styleClasses.card}>
         <Card.Img
           src={image}
