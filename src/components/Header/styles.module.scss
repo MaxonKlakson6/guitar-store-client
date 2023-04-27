@@ -52,6 +52,17 @@
   gap: 60px;
 }
 
+.badgeButton {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -25px;
+  background-color: #fff;
+}
+
 .navIcon {
   width: 45px;
 }

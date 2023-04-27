@@ -20,3 +20,11 @@ export interface Accessory {
 }
 
 export type Product = Guitar | Accessory;
+
+export interface CartItem {
+  price: number;
+  quantity: number;
+  name: string;
+  image: string;
+  vendorCode: number;
+}
