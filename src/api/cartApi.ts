@@ -1,13 +1,13 @@
 import { createApi } from "@reduxjs/toolkit/dist/query/react";
 
-import { baseQuery } from "src/api/baseQuery";
+import { baseQueryWithCheckToken } from "src/api/authApi";
 import { ChangeQuantityRequest } from "src/pages/Cart/types/cartRequests";
 import { CartItem } from "src/types/products";
 
 export const cartApi = createApi({
   reducerPath: "cart",
   tagTypes: ["CartItems"],
-  baseQuery,
+  baseQuery: baseQueryWithCheckToken,
   endpoints: (builder) => ({
     getCart: builder.query<CartItem[], void>({
       query: () => ({
@@ -47,6 +47,7 @@ export const cartApi = createApi({
 
 export const {
   useGetCartQuery,
+  useLazyGetCartQuery,
   useAddCartItemMutation,
   useChangeItemQuantityMutation,
 } = cartApi;

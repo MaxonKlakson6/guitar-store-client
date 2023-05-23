@@ -1,33 +1,22 @@
 import { MouseEvent } from "react";
 
+import GuitarDescription from "src/pages/Product/components/ProductLayout/GuitarDescription";
+import AccessoryDescription from "src/pages/Product/components/ProductLayout/AccessoryDescription";
 import { isGuitar } from "src/helpers/isGuitar";
 import { Product } from "src/types/products";
 import heartIcon from "src/static/icons/heart.png";
 import cartIcon from "src/static/icons/cart.png";
 import stylesClasses from "src/pages/Product/components/ProductLayout/styles.module.scss";
-import GuitarDescription from "./GuitarDescription";
-import AccessoryDescription from "./AccessoryDescription";
 
 interface ProductLayoutProps {
   product: Product;
-  quantity: number;
   handleAddCartItem: (
     event: MouseEvent<HTMLButtonElement>,
     vendorCode: number
   ) => void;
-  handleIncrementCartItem: (
-    event: MouseEvent<HTMLButtonElement>,
-    vendorCode: number,
-    quantity: number
-  ) => void;
 }
 
-const ProductLayout = ({
-  product,
-  quantity,
-  handleAddCartItem,
-  handleIncrementCartItem,
-}: ProductLayoutProps) => {
+const ProductLayout = ({ product, handleAddCartItem }: ProductLayoutProps) => {
   return (
     <div className={stylesClasses.productWrapper}>
       <img
@@ -74,15 +63,7 @@ const ProductLayout = ({
           </button>
           <button
             className={stylesClasses.belowButton}
-            onClick={(event) =>
-              quantity > 0
-                ? handleIncrementCartItem(
-                    event,
-                    product.vendorCode,
-                    quantity + 1
-                  )
-                : handleAddCartItem(event, product.vendorCode)
-            }
+            onClick={(event) => handleAddCartItem(event, product.vendorCode)}
           >
             <img
               src={cartIcon}

@@ -1,3 +1,4 @@
+import { MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 
@@ -12,6 +13,10 @@ interface ProductCardProps {
   productName: string;
   price: number;
   image: string;
+  handleAddCartItem: (
+    event: MouseEvent<HTMLButtonElement>,
+    vendorCode: number
+  ) => void;
 }
 
 const ProductCard = ({
@@ -19,7 +24,12 @@ const ProductCard = ({
   productName,
   price,
   image,
+  handleAddCartItem,
 }: ProductCardProps) => {
+  const addCartItem = (event: MouseEvent<HTMLButtonElement>) => {
+    handleAddCartItem(event, vendorCode);
+  };
+
   return (
     <Link className={styleClasses.cardLink} to={`/product/${vendorCode}`}>
       <Card className={styleClasses.card}>
@@ -33,6 +43,7 @@ const ProductCard = ({
           imageAlt="Favourite"
           buttonClassName={styleClasses.favouriteButton}
           imageClassName={styleClasses.favouriteIcon}
+          onClick={addCartItem}
         />
         <Card.Body className={styleClasses.cardBody}>
           <Tooltip position="top" innerText={productName}>
@@ -48,6 +59,7 @@ const ProductCard = ({
             imageAlt="cart"
             buttonClassName={styleClasses.addCartButton}
             imageClassName={styleClasses.cartIcon}
+            onClick={addCartItem}
           />
         </Card.Body>
       </Card>
