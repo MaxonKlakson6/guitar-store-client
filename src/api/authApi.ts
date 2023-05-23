@@ -7,6 +7,7 @@ import {
 
 import { baseQuery } from "src/api/baseQuery";
 import { saveToken } from "src/store/reducers/authSlice";
+import { isTokenResponse } from "src/helpers/isTokenResponse";
 
 export const authApi = createApi({
   reducerPath: "authApi",
@@ -32,7 +33,9 @@ export const baseQueryWithCheckToken: BaseQueryFn<
     api
       .dispatch(authApi.endpoints.createUnauthorizedUser.initiate())
       .then((response) => {
-        api.dispatch(saveToken(response.data as string));
+        if (isTokenResponse(response)) {
+          api.dispatch(saveToken(response.data));
+        }
       });
   }
   return response;
