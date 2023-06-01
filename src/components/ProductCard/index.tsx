@@ -5,6 +5,7 @@ import { Card } from "react-bootstrap";
 import Tooltip from "src/components/UI/Tooltip";
 import IconButton from "src/components/UI/IconButton";
 import heartIcon from "src/static/icons/heart.png";
+import redHeartIcon from "src/static/icons/heart_red.png";
 import cartIcon from "src/static/icons/cart.png";
 import styleClasses from "src/components/ProductCard/styles.module.scss";
 
@@ -13,7 +14,12 @@ interface ProductCardProps {
   productName: string;
   price: number;
   image: string;
+  isFavourite: boolean;
   handleAddCartItem: (
+    event: MouseEvent<HTMLButtonElement>,
+    vendorCode: number
+  ) => void;
+  handleToggleFavouriteItem: (
     event: MouseEvent<HTMLButtonElement>,
     vendorCode: number
   ) => void;
@@ -24,11 +30,21 @@ const ProductCard = ({
   productName,
   price,
   image,
+  isFavourite,
   handleAddCartItem,
+  handleToggleFavouriteItem,
 }: ProductCardProps) => {
   const addCartItem = (event: MouseEvent<HTMLButtonElement>) => {
     handleAddCartItem(event, vendorCode);
   };
+  const toggleFavouriteItem = (event: MouseEvent<HTMLButtonElement>) => {
+    handleToggleFavouriteItem(event, vendorCode);
+  };
+
+  const favouriteImageUrl = isFavourite ? redHeartIcon : heartIcon;
+  const favouriteImageClassName = isFavourite
+    ? styleClasses.favouriteIcon
+    : styleClasses.notFavouriteIcon;
 
   return (
     <Link className={styleClasses.cardLink} to={`/product/${vendorCode}`}>
@@ -39,11 +55,11 @@ const ProductCard = ({
           className={styleClasses.cardImage}
         />
         <IconButton
-          imageUrl={heartIcon}
+          imageUrl={favouriteImageUrl}
           imageAlt="Favourite"
           buttonClassName={styleClasses.favouriteButton}
-          imageClassName={styleClasses.favouriteIcon}
-          onClick={addCartItem}
+          imageClassName={favouriteImageClassName}
+          onClick={toggleFavouriteItem}
         />
         <Card.Body className={styleClasses.cardBody}>
           <Tooltip position="top" innerText={productName}>

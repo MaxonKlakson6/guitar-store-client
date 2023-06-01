@@ -6,7 +6,7 @@ import { GetAllGoodsResponse } from "src/pages/Store/types/storeResponses";
 import { Product } from "src/types/products";
 
 export const goodsApi = createApi({
-  reducerPath: "goods",
+  reducerPath: "goodsApi",
   baseQuery,
   endpoints: (builder) => ({
     getAllGoods: builder.query<GetAllGoodsResponse, GetGoodsRequest>({

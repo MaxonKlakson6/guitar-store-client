@@ -10,13 +10,23 @@ import stylesClasses from "src/pages/Product/components/ProductLayout/styles.mod
 
 interface ProductLayoutProps {
   product: Product;
+  favouriteButtonText: string;
   handleAddCartItem: (
+    event: MouseEvent<HTMLButtonElement>,
+    vendorCode: number
+  ) => void;
+  handleToggleFavouriteItem: (
     event: MouseEvent<HTMLButtonElement>,
     vendorCode: number
   ) => void;
 }
 
-const ProductLayout = ({ product, handleAddCartItem }: ProductLayoutProps) => {
+const ProductLayout = ({
+  product,
+  favouriteButtonText,
+  handleAddCartItem,
+  handleToggleFavouriteItem,
+}: ProductLayoutProps) => {
   return (
     <div className={stylesClasses.productWrapper}>
       <img
@@ -52,14 +62,19 @@ const ProductLayout = ({ product, handleAddCartItem }: ProductLayoutProps) => {
           </div>
         </div>
         <div className={stylesClasses.belowButtonsBlock}>
-          <button className={stylesClasses.belowButton}>
+          <button
+            className={stylesClasses.belowButton}
+            onClick={(event) =>
+              handleToggleFavouriteItem(event, product.vendorCode)
+            }
+          >
             <img
               src={heartIcon}
-              alt="Добавить в избранное"
+              alt="Избранное"
               className={stylesClasses.buttonInnerIcon}
             />
             <br />
-            Добавить в избранные
+            {favouriteButtonText}
           </button>
           <button
             className={stylesClasses.belowButton}
@@ -67,7 +82,7 @@ const ProductLayout = ({ product, handleAddCartItem }: ProductLayoutProps) => {
           >
             <img
               src={cartIcon}
-              alt="Добавить в корзину"
+              alt="Корзина"
               className={stylesClasses.buttonInnerIcon}
             />
             <br />

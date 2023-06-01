@@ -28,3 +28,7 @@ export interface CartItem {
   image: string;
   vendorCode: number;
 }
+
+export type FavouriteItem = Omit<CartItem, "qunatity">;
+
+export type FavouritesObject = Record<string, FavouriteItem>;

@@ -5,7 +5,7 @@ import { ChangeQuantityRequest } from "src/pages/Cart/types/cartRequests";
 import { CartItem } from "src/types/products";
 
 export const cartApi = createApi({
-  reducerPath: "cart",
+  reducerPath: "cartApi",
   tagTypes: ["CartItems"],
   baseQuery: baseQueryWithCheckToken,
   endpoints: (builder) => ({

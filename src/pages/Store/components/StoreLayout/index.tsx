@@ -5,6 +5,9 @@ import ProductCard from "src/components/ProductCard";
 import { GetAllGoodsResponse } from "src/pages/Store/types/storeResponses";
 import { GetGoodsRequest } from "src/pages/Store/types/storeRequests";
 import styleClasses from "src/pages/Store/components/StoreLayout/styles.module.scss";
+import { FavouriteItem } from "src/types/products";
+import { useAppSelector } from "src/hooks/reduxHooks";
+import { favouriteSelector } from "src/store/selectors/favouriteSelector";
 
 interface StoreLayoutProps {
   isLoadProducts: boolean;
@@ -12,6 +15,10 @@ interface StoreLayoutProps {
   products: GetAllGoodsResponse;
   loadGoods: (requestBody: GetGoodsRequest) => void;
   handleAddCartItem: (
+    event: MouseEvent<HTMLButtonElement>,
+    vendorCode: number
+  ) => void;
+  handleToggleFavouriteItem: (
     event: MouseEvent<HTMLButtonElement>,
     vendorCode: number
   ) => void;
@@ -23,7 +30,9 @@ const StoreLayout = ({
   products,
   loadGoods,
   handleAddCartItem,
+  handleToggleFavouriteItem,
 }: StoreLayoutProps) => {
+  const favouritesObject = useAppSelector(favouriteSelector);
   return (
     <div className={styleClasses.wrapper}>
       <Filter category={category} loadGoods={loadGoods} />
@@ -38,7 +47,9 @@ const StoreLayout = ({
             productName={product.name}
             price={product.price}
             image={product.image}
+            isFavourite={!!favouritesObject[product.vendorCode]}
             handleAddCartItem={handleAddCartItem}
+            handleToggleFavouriteItem={handleToggleFavouriteItem}
           />
         ))}
         {products.accessories.map((accessory) => (
@@ -48,7 +59,9 @@ const StoreLayout = ({
             productName={accessory.name}
             price={accessory.price}
             image={accessory.image}
+            isFavourite={!!favouritesObject[accessory.vendorCode]}
             handleAddCartItem={handleAddCartItem}
+            handleToggleFavouriteItem={handleToggleFavouriteItem}
           />
         ))}
       </div>

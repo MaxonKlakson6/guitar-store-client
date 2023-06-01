@@ -4,6 +4,7 @@ import Loader from "src/components/UI/Loader";
 import StoreLayout from "src/pages/Store/components/StoreLayout";
 import { useLazyGetAllGoodsQuery } from "src/api/goodsApi";
 import { useCart } from "src/hooks/useCart";
+import { useFavourite } from "src/hooks/useFavourite";
 import { getAllGoodsDefaultValue } from "src/constants/responseDefaultValues";
 import { GetGoodsRequest } from "src/pages/Store/types/storeRequests";
 
@@ -19,6 +20,7 @@ const StoreContainer = () => {
     },
   ] = useLazyGetAllGoodsQuery();
   const { handleAddCartItem } = useCart();
+  const { handleToggleFavouriteItem } = useFavourite();
 
   const loadGoods = (requestBody: GetGoodsRequest) => {
     trigger(requestBody);
@@ -32,6 +34,7 @@ const StoreContainer = () => {
         products={goods}
         loadGoods={loadGoods}
         handleAddCartItem={handleAddCartItem}
+        handleToggleFavouriteItem={handleToggleFavouriteItem}
       />
     </Loader>
   );

@@ -1,0 +1,35 @@
+.favouriteWrapper {
+  padding: 71px 69px;
+}
+
+.title {
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+}
+
+.productsHolder {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 286px);
+  grid-auto-flow: column, dense;
+  column-gap: 52px;
+  row-gap: 73px;
+}
+
+.nothingFavourite {
+  width: fit-content;
+  margin: 71px auto;
+
+  h1 {
+    margin-bottom: 30px;
+    font-family: PlexSans, sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    text-align: center;
+  }
+
+  img {
+    width: 800px;
+  }
+}

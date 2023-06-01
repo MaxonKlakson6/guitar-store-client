@@ -59,8 +59,12 @@
   left: 21px;
 }
 
-.favouriteIcon {
+.notFavouriteIcon {
   -webkit-filter: invert(100%);
+  width: 35px;
+}
+
+.favouriteIcon {
   width: 35px;
 }
 
