@@ -8,6 +8,9 @@ import penIcon from "src/static/icons/pen.png";
 import tickIcon from "src/static/icons/tick.png";
 import stylesClasses from "src/pages/Profile/components/EditableField/styles.module.scss";
 
+// @ts-ignore
+const ReactPhoneInput = PhoneInput.default ? PhoneInput.default : PhoneInput;
+
 interface PhoneEditableFieldProps {
   name: keyof ProfileForm;
   value: string;
@@ -32,7 +35,7 @@ const PhoneEditableField = ({
   return (
     <div className={stylesClasses.inputWrapper}>
       <h3 className={stylesClasses.label}>{label}</h3>
-      <PhoneInput
+      <ReactPhoneInput
         disabled={isDisabled}
         value={value}
         inputProps={{ name }}
