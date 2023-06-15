@@ -1,6 +1,6 @@
 import { Modal } from "react-bootstrap";
 import { useFormik } from "formik";
-import PhoneInput, { CountryData } from "react-phone-input-2";
+import PhoneInput from "react-phone-input-2";
 import loc from "react-phone-input-2/lang/ru.json";
 import "react-phone-input-2/lib/style.css";
 
@@ -31,23 +31,16 @@ const SignUpForm = ({
       initialValues: signUpFormInitialState,
       validationSchema: signUpSchema,
       onSubmit: () => {
-        if (isValidPhone) {
-          const { confirm, ...form } = values;
-          updateUser(form).then(() => {
-            handleOpenAnother();
-          });
-        }
+        const { confirm, ...form } = values;
+        updateUser(form).then(() => {
+          handleOpenAnother();
+        });
       },
     });
 
-  const { isValidPhone, checkIsValidPhone, handleChangePhone } = usePhoneInput({
-    isValid: false,
+  const { handleChangePhone } = usePhoneInput({
     handleChange,
   });
-
-  const isValid = (_: string, country: object) => {
-    return checkIsValidPhone(_, country, values.phoneNumber);
-  };
 
   return (
     <Modal show={isOpen} onHide={handleClose} className={styleClasses.modal}>
@@ -99,16 +92,15 @@ const SignUpForm = ({
           >
             <PhoneInput
               country="by"
+              disableDropdown={true}
               localization={loc}
               containerClass={styleClasses.phoneInputContainer}
               inputClass={styleClasses.phoneInput}
-              placeholder="+375 (33) 555....."
               value={values.phoneNumber}
               inputProps={{
                 name: "phoneNumber",
               }}
               onChange={handleChangePhone}
-              isValid={isValid}
               onBlur={handleBlur}
             />
           </ErrorInput>

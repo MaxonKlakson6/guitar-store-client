@@ -13,13 +13,8 @@ const ProfileContainer = () => {
   const updateField = (
     fieldName: string,
     value: string,
-    errors: Record<string, string>,
-    isValidPhone?: boolean
+    errors: Record<string, string>
   ) => {
-    if (fieldName === "phoneNumber") {
-      isValidPhone && updateUser({ fieldName, value });
-      return;
-    }
     if (!errors[fieldName]) {
       updateUser({ fieldName, value });
     }
