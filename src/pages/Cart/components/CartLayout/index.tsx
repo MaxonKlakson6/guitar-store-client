@@ -33,7 +33,7 @@ const CartLayout = ({
       {!isLoading && cartItems.length === 0 ? (
         <div className={stylesClasses.emptyCartBlock}>
           <h1>Корзина пуста</h1>
-          <img src={emptyCartGif} alt="Cart is empty" />
+          <img src={emptyCartGif} alt="Корзина пуста" />
           <Link
             to={ROUTE_NAMES.STORE}
             className={stylesClasses.makeOrderButton}
@@ -52,6 +52,7 @@ const CartLayout = ({
           <div className={stylesClasses.cartItemsWrapper}>
             {cartItems.map((cartItem) => (
               <CartItem
+                key={cartItem.vendorCode}
                 name={cartItem.name}
                 image={cartItem.image}
                 price={cartItem.price}

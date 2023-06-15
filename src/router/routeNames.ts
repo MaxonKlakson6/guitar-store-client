@@ -4,5 +4,6 @@ export const ROUTE_NAMES = {
   PRODUCT_PAGE: "/product/:vendorCode",
   CART: "/cart",
   FAVOURITE: "/favourite",
+  PROFILE: "/profile",
   NOT_FOUND: "/not-found",
 };

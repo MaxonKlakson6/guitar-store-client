@@ -1,44 +1,65 @@
-import {
-  createApi,
-  BaseQueryFn,
-  FetchArgs,
-  FetchBaseQueryError,
-} from "@reduxjs/toolkit/query/react";
-
-import { baseQuery } from "src/api/baseQuery";
+import { User, UserFormData } from "src/types/user";
+import { rootApi } from "src/api";
 import { saveToken } from "src/store/reducers/authSlice";
-import { isTokenResponse } from "src/helpers/isTokenResponse";
 
-export const authApi = createApi({
-  reducerPath: "authApi",
-  baseQuery,
+export interface SignInResponse {
+  message: string;
+  token: string;
+}
+
+interface UpdateUserRequest {
+  fieldName: string;
+  value: string;
+}
+
+export const authApi = rootApi.injectEndpoints({
   endpoints: (builder) => ({
+    getUser: builder.query<User, void>({
+      query: () => ({
+        url: "/user",
+      }),
+      providesTags: ["UserInfo"],
+    }),
     createUnauthorizedUser: builder.mutation<string, void>({
       query: () => ({
         url: "/user",
         method: "POST",
       }),
+      onQueryStarted: async (args, api) => {
+        const postResult = await api.queryFulfilled;
+        api.dispatch(saveToken(postResult.data));
+      },
+    }),
+    updateUnauthorizedUser: builder.mutation<string, UserFormData>({
+      query: (userData) => ({
+        url: "/user",
+        method: "PUT",
+        body: userData,
+      }),
+    }),
+    signIn: builder.mutation<SignInResponse, Pick<User, "email" | "password">>({
+      query: (body) => ({
+        url: "/sign-in",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["User", "UserInfo"],
+    }),
+    updateUserInfo: builder.mutation<string, UpdateUserRequest>({
+      query: (body) => ({
+        url: "/user",
+        method: "PATCH",
+        body,
+      }),
+      invalidatesTags: ["UserInfo"],
     }),
   }),
 });
 
-export const baseQueryWithCheckToken: BaseQueryFn<
-  string | FetchArgs,
-  unknown,
-  FetchBaseQueryError
-> = async (args, api, extraOptions) => {
-  const response = await baseQuery(args, api, extraOptions);
-
-  if (response.error?.status === 401) {
-    api
-      .dispatch(authApi.endpoints.createUnauthorizedUser.initiate())
-      .then((response) => {
-        if (isTokenResponse(response)) {
-          api.dispatch(saveToken(response.data));
-        }
-      });
-  }
-  return response;
-};
-
-export const { useCreateUnauthorizedUserMutation } = authApi;
+export const {
+  useGetUserQuery,
+  useCreateUnauthorizedUserMutation,
+  useUpdateUnauthorizedUserMutation,
+  useSignInMutation,
+  useUpdateUserInfoMutation,
+} = authApi;

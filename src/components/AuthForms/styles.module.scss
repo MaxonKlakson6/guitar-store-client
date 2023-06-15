@@ -1,0 +1,78 @@
+.modal {
+  div {
+    border-radius: 0;
+    background-color: #d9d9d9;
+  }
+}
+
+.wrapper {
+  padding: 78px 75px 22px 81px;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 34px;
+  right: 26px;
+}
+
+.title {
+  margin-bottom: 45px;
+  text-align: center;
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 1px 0 1px 14px;
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  outline: 0;
+
+  &::placeholder {
+    color: #7f7f7f;
+  }
+}
+
+.phoneInputContainer {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.phoneInput {
+  width: 100% !important;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.submitButton {
+  margin: 0 auto 39px;
+  padding: 11px 33px;
+  display: block;
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  border: 0;
+  border-radius: 10px;
+  background-color: #979595;
+}
+
+.emptyButton {
+  display: block;
+  margin: 0 auto;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  font-family: PlexSans, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  text-decoration: underline;
+}

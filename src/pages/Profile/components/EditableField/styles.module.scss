@@ -1,0 +1,49 @@
+.inputWrapper {
+  &:not(:first-child) {
+    margin-top: 11px;
+  }
+}
+
+.label {
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.input {
+  height: 40px;
+  margin-top: 11px;
+  margin-right: 24px;
+  padding-left: 10px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  font-family: PlexSans, sans-serif;
+  font-weight: 400;
+  outline: 0;
+
+  &:disabled {
+    cursor: text;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #000;
+  }
+}
+
+.phoneInputWrapper {
+  width: fit-content;
+  margin-top: 11px;
+  margin-right: 24px;
+  display: inline-block;
+}
+
+.phoneInput {
+  width: 219px !important;
+  &:disabled {
+    cursor: text;
+  }
+}
+
+.icon {
+  width: 29px;
+  height: 29px;
+}

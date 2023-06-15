@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 
+import ProfileIcon from "src/components/Header/ProfileIcon";
 import IconButton from "src/components/UI/IconButton";
 import { useCart } from "src/hooks/useCart";
 import { useFavourite } from "src/hooks/useFavourite";
 import { ROUTE_NAMES } from "src/router/routeNames";
 import heartIcon from "src/static/icons/heart.png";
 import cartIcon from "src/static/icons/cart.png";
-import profileIcon from "src/static/icons/profile.png";
 import styleClasses from "src/components/Header/styles.module.scss";
 
 const Navbar = () => {
@@ -23,12 +23,16 @@ const Navbar = () => {
     navigate(ROUTE_NAMES.FAVOURITE);
   };
 
+  const navigateToProfile = () => {
+    navigate(ROUTE_NAMES.PROFILE);
+  };
+
   return (
     <nav className={styleClasses.navbar}>
       <IconButton
         imageUrl={heartIcon}
         imageAlt="Favourite"
-        innerText="Favourite"
+        innerText="Избранное"
         imageClassName={styleClasses.navIcon}
         buttonClassName={styleClasses.badgeButton}
         onClick={navigateToFavourite}
@@ -48,7 +52,7 @@ const Navbar = () => {
       <IconButton
         imageUrl={cartIcon}
         imageAlt="Cart"
-        innerText="Cart"
+        innerText="Корзина"
         imageClassName={styleClasses.navIcon}
         buttonClassName={styleClasses.badgeButton}
         onClick={navigateToCart}
@@ -68,12 +72,7 @@ const Navbar = () => {
           )
         }
       />
-      <IconButton
-        imageUrl={profileIcon}
-        imageAlt="Profile"
-        innerText="Profile"
-        imageClassName={styleClasses.navIcon}
-      />
+      <ProfileIcon navigateToProfile={navigateToProfile} />
     </nav>
   );
 };

@@ -1,14 +1,9 @@
-import { createApi } from "@reduxjs/toolkit/dist/query/react";
-
-import { baseQueryWithCheckToken } from "src/api/authApi";
 import { transformFavouritesIntoObject } from "src/helpers/transformFavouritesIntoObject";
 import { saveFavourite } from "src/store/reducers/favouriteSlice";
 import { FavouriteItem } from "src/types/products";
+import { rootApi } from "src/api";
 
-export const favouriteApi = createApi({
-  reducerPath: "favouriteApi",
-  tagTypes: ["FavouriteItems"],
-  baseQuery: baseQueryWithCheckToken,
+export const favouriteApi = rootApi.injectEndpoints({
   endpoints: (builder) => ({
     getFavouriteItems: builder.query<FavouriteItem[], void>({
       query: () => ({
@@ -28,8 +23,9 @@ export const favouriteApi = createApi({
                 id: vendorCode,
               })),
               { type: "FavouriteItems", id: "LIST" },
+              "User",
             ]
-          : [{ type: "FavouriteItems", id: "LIST" }],
+          : [{ type: "FavouriteItems", id: "LIST" }, "User"],
     }),
     toggleFavouriteItem: builder.mutation<string, number>({
       query: (vendorCode) => ({

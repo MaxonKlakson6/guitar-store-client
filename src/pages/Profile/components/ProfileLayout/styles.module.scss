@@ -1,0 +1,73 @@
+.wrapper {
+  padding: 36px 69px;
+}
+
+.title {
+  margin-top: 35px;
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+}
+
+.profile {
+  display: flex;
+  gap: 14px;
+}
+
+.profileContainer {
+  width: 100%;
+}
+
+.infoColumns {
+  margin-top: 61px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftColumn {
+  margin-left: 49px;
+}
+
+.addAddress {
+  margin-top: 28px;
+}
+
+.label {
+  margin-bottom: 15px;
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.rightColumn {
+  margin-top: 42px;
+  display: flex;
+  flex-direction: column;
+  gap: 67px;
+
+  a {
+    font-family: PlexSans, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+  }
+}
+
+.logoutBtn {
+  width: fit-content;
+  margin-top: 30px;
+  margin-left: 10px;
+  padding: 10px 15px;
+  font-family: PlexSans, sans-serif;
+  font-weight: 600;
+  color: #fff;
+  background-color: #f02323;
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  &:hover {
+    transition: 0.4s;
+    background-color: #fff;
+    color: #f02323;
+    border-color: #f02323;
+  }
+}

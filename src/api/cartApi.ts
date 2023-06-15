@@ -1,13 +1,8 @@
-import { createApi } from "@reduxjs/toolkit/dist/query/react";
-
-import { baseQueryWithCheckToken } from "src/api/authApi";
 import { ChangeQuantityRequest } from "src/pages/Cart/types/cartRequests";
 import { CartItem } from "src/types/products";
+import { rootApi } from "src/api";
 
-export const cartApi = createApi({
-  reducerPath: "cartApi",
-  tagTypes: ["CartItems"],
-  baseQuery: baseQueryWithCheckToken,
+export const cartApi = rootApi.injectEndpoints({
   endpoints: (builder) => ({
     getCart: builder.query<CartItem[], void>({
       query: () => ({
@@ -21,8 +16,9 @@ export const cartApi = createApi({
                 id: vendorCode,
               })),
               { type: "CartItems", id: "LIST" },
+              "User",
             ]
-          : [{ type: "CartItems", id: "LIST" }],
+          : [{ type: "CartItems", id: "LIST" }, "User"],
     }),
     addCartItem: builder.mutation<string, number>({
       query: (vendorCode) => ({

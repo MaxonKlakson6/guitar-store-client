@@ -102,3 +102,54 @@
 .active {
   background-color: #2b2b2b;
 }
+
+.popover {
+  width: 496px;
+  border-radius: 0;
+  background-color: #dcdbdb;
+}
+
+.popoverTitle {
+  margin-bottom: 19px;
+  text-align: center;
+  font-family: PlexSans, sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.popoverButtonsHolder {
+  display: flex;
+  justify-content: space-between;
+}
+
+.popoverButton {
+  padding: 2px 3px;
+  background-color: #a0a0a0;
+  font-family: PlexSans, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 0;
+}
+
+.modal {
+  div {
+    background-color: #d9d9d9;
+    border-radius: 0;
+  }
+}
+
+.popoverListWrapper {
+  display: flex;
+  justify-content: space-between;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+}
+
+.logo {
+  width: 100px;
+  object-fit: contain;
+}
