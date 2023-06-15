@@ -945,6 +945,11 @@ react-fast-compare@^2.0.1:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
+react-international-phone@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/react-international-phone/-/react-international-phone-2.2.2.tgz#5fee69da21490426fcc1777b60d1bb777b995a22"
+  integrity sha512-geH3exdxFeDzPKM1EqVPUCkKVp+pNkbYoBhQsqQL5vM++2fMb+0AD4k5IfB+I0p1dSz0Ugg7NY2RQzGXlUUiTw==
+
 react-is@^16.13.1, react-is@^16.3.2, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"

@@ -101,14 +101,14 @@ const ProfileLayout = ({
                 onChangeDisabledStatus={handleUpdatingChange}
                 onChange={handleChange}
               />
-              {/* <PhoneEditableField
+              <PhoneEditableField
                 label="Контактный номер"
                 isDisabled={isDisabled.phoneNumber}
                 name="phoneNumber"
                 value={values.phoneNumber}
                 onChangeDisabledStatus={handleUpdatingChange}
                 onChange={handleChangePhone}
-              /> */}
+              />
               <EditableField
                 label="Email"
                 isDisabled={isDisabled.email}
