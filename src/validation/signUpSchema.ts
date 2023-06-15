@@ -15,10 +15,6 @@ export const signUpSchema = yup.object().shape({
     .min(2, "Слишком короткая фамилия")
     .max(15, "Слишком длинная фамилия")
     .required("Фамилия обязательно поле"),
-  phoneNumber: yup
-    .string()
-    .min(19, "Некоректный номер")
-    .required("Номер обязательное поле"),
   password: yup
     .string()
     .min(6, "Слишком короткий пароль")
