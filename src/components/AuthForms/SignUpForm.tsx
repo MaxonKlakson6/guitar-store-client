@@ -7,11 +7,14 @@ import "react-phone-input-2/lib/style.css";
 import IconButton from "src/components/UI/IconButton";
 import ErrorInput from "src/components/UI/ErrorInput";
 import { useUpdateUnauthorizedUserMutation } from "src/api/authApi";
+import { usePhoneInput } from "src/hooks/usePhoneInput";
 import { signUpSchema } from "src/validation/signUpSchema";
 import { signUpFormInitialState } from "src/constants/initialValues";
 import closeIcon from "src/static/icons/cancel.png";
 import styleClasses from "src/components/AuthForms/styles.module.scss";
-import { usePhoneInput } from "src/hooks/usePhoneInput";
+
+// @ts-ignore
+const ReactPhoneInput = PhoneInput.default ? PhoneInput.default : PhoneInput;
 
 interface SignUpFormProps {
   isOpen: boolean;
@@ -31,16 +34,23 @@ const SignUpForm = ({
       initialValues: signUpFormInitialState,
       validationSchema: signUpSchema,
       onSubmit: () => {
-        const { confirm, ...form } = values;
-        updateUser(form).then(() => {
-          handleOpenAnother();
-        });
+        if (isValidPhone) {
+          const { confirm, ...form } = values;
+          updateUser(form).then(() => {
+            handleOpenAnother();
+          });
+        }
       },
     });
 
-  const { handleChangePhone } = usePhoneInput({
+  const { isValidPhone, checkIsValidPhone, handleChangePhone } = usePhoneInput({
+    isValid: false,
     handleChange,
   });
+
+  const isValid = (_: string, country: object) => {
+    return checkIsValidPhone(_, country, values.phoneNumber);
+  };
 
   return (
     <Modal show={isOpen} onHide={handleClose} className={styleClasses.modal}>
@@ -90,9 +100,8 @@ const SignUpForm = ({
             error={errors.phoneNumber}
             isTouched={touched.phoneNumber}
           >
-            <PhoneInput
+            <ReactPhoneInput
               country="by"
-              disableDropdown={true}
               localization={loc}
               containerClass={styleClasses.phoneInputContainer}
               inputClass={styleClasses.phoneInput}
@@ -101,6 +110,7 @@ const SignUpForm = ({
                 name: "phoneNumber",
               }}
               onChange={handleChangePhone}
+              isValid={isValid}
               onBlur={handleBlur}
             />
           </ErrorInput>
