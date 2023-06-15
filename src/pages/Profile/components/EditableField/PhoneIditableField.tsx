@@ -22,6 +22,7 @@ interface PhoneEditableFieldProps {
     _: {} | CountryData,
     event: ChangeEvent<HTMLInputElement>
   ) => void;
+  isValid: (_: string, country: object, currentValue: string) => boolean;
 }
 
 const PhoneEditableField = ({
@@ -31,6 +32,7 @@ const PhoneEditableField = ({
   isDisabled,
   onChangeDisabledStatus,
   onChange,
+  isValid,
 }: PhoneEditableFieldProps) => {
   return (
     <div className={stylesClasses.inputWrapper}>
@@ -42,6 +44,7 @@ const PhoneEditableField = ({
         containerClass={stylesClasses.phoneInputWrapper}
         inputClass={stylesClasses.phoneInput}
         onChange={onChange}
+        isValid={isValid}
       />
       <IconButton
         imageUrl={isDisabled ? penIcon : tickIcon}

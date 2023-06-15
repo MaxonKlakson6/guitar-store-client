@@ -19,7 +19,8 @@ interface ProfileLayoutProps {
   updateField: (
     fieldName: string,
     value: string,
-    errors: Record<string, string>
+    errors: Record<string, string>,
+    isValidPhone?: boolean
   ) => void;
   handleLogout: () => void;
 }
@@ -52,13 +53,18 @@ const ProfileLayout = ({
   const [isShowSecondDeliveryAddress, setIsShowSecondDeliveryAddress] =
     useState(false);
 
-  const { handleChangePhone } = usePhoneInput({
+  const { isValidPhone, handleChangePhone, checkIsValidPhone } = usePhoneInput({
+    isValid: true,
     handleChange,
   });
 
+  const isValid = (_: string, country: object): boolean => {
+    return checkIsValidPhone(_, country, values.phoneNumber);
+  };
+
   const handleSubmit = (fieldName: keyof ProfileForm) => {
     if (values[fieldName] !== user[fieldName]) {
-      updateField(fieldName, values[fieldName], errors);
+      updateField(fieldName, values[fieldName], errors, isValidPhone);
     }
   };
 
@@ -108,6 +114,7 @@ const ProfileLayout = ({
                 value={values.phoneNumber}
                 onChangeDisabledStatus={handleUpdatingChange}
                 onChange={handleChangePhone}
+                isValid={isValid}
               />
               <EditableField
                 label="Email"
