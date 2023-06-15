@@ -85,9 +85,10 @@ const ProfileIcon = ({ navigateToProfile }: ProfileIconProps) => {
         </Overlay>
       ) : (
         <OverlayTrigger
-          trigger="click"
+          trigger="focus"
           placement="bottom"
           show={isOpenPopover}
+          onToggle={() => setIsOpenPopover(false)}
           overlay={
             <Popover className={styleClasses.popover}>
               <Popover.Body>
