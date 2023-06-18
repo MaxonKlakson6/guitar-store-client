@@ -7,7 +7,7 @@ import { userInitialValue } from "src/constants/initialValues";
 
 const ProfileContainer = () => {
   const dispatch = useAppDispatch();
-  const { data = userInitialValue, isLoading } = useGetUserQuery();
+  const { data = userInitialValue, isLoading, isSuccess } = useGetUserQuery();
   const [updateUser] = useUpdateUserInfoMutation();
 
   const updateField = (

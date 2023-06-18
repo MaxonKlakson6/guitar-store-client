@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 
@@ -30,7 +30,7 @@ const ProfileLayout = ({
   updateField,
   handleLogout,
 }: ProfileLayoutProps) => {
-  const { values, errors, handleChange } = useFormik<ProfileForm>({
+  const { values, errors, handleChange, setValues } = useFormik<ProfileForm>({
     initialValues: {
       name: user.name,
       surname: user.surname,
@@ -83,6 +83,20 @@ const ProfileLayout = ({
       handleSubmit(fieldName);
     }
   };
+
+  useEffect(() => {
+    if (user && user.name) {
+      const formValues = {
+        name: user.name,
+        surname: user.surname,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        deliveryAddress: user.deliveryAddress,
+        secondDeliveryAddress: user.secondDeliveryAddress,
+      };
+      setValues(formValues);
+    }
+  }, [user]);
 
   return (
     <div className={stylesClasses.wrapper}>
