@@ -32,10 +32,10 @@ const ProfileLayout = ({
 }: ProfileLayoutProps) => {
   const { values, errors, handleChange, setValues } = useFormik<ProfileForm>({
     initialValues: {
-      name: user.name,
-      surname: user.surname,
+      name: user.name || "",
+      surname: user.surname || "",
       phoneNumber: user.phoneNumber || "",
-      email: user.email,
+      email: user.email || "",
       deliveryAddress: user.deliveryAddress || "",
       secondDeliveryAddress: user.secondDeliveryAddress || "",
     },
