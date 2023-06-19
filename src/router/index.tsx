@@ -9,6 +9,7 @@ import StoreContainer from "src/pages/Store/container/StoreContainer";
 import PrivateRoute from "src/router/PrivateRoute";
 import { useAppSelector } from "src/hooks/reduxHooks";
 import { ROUTE_NAMES } from "src/router/routeNames";
+import OrdersContainer from "src/pages/Orders/container/OrdersContainer";
 
 const Router = () => {
   const isSignedIn = useAppSelector((state) => state.auth.isSignedIn);
@@ -20,6 +21,7 @@ const Router = () => {
       <Route path={ROUTE_NAMES.FAVOURITE} element={<FavouriteContainer />} />
       <Route element={<PrivateRoute condition={isSignedIn} />}>
         <Route path={ROUTE_NAMES.PROFILE} element={<ProfileContainer />} />
+        <Route path={ROUTE_NAMES.ORDERS} element={<OrdersContainer />} />
       </Route>
       <Route path={ROUTE_NAMES.NOT_FOUND} element={<NotFound />} />
       <Route path="/" element={<Navigate to={ROUTE_NAMES.STORE} />} />

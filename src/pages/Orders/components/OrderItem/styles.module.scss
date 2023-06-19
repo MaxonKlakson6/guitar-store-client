@@ -1,0 +1,28 @@
+.orderWrapper {
+  padding: 18px 10px 31px 69px;
+  &:not(:last-child) {
+    border-bottom: 1px solid #000;
+  }
+}
+
+.title {
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.orderInfo {
+  margin-top: 33px;
+}
+
+.info {
+  margin: 0;
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #4a4a4a;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}

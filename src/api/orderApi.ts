@@ -1,21 +1,34 @@
 import { rootApi } from "src/api";
 
-interface OrderData {
-  name: string;
-  surname: string;
-  phoneNumber: string;
-  email: string;
+export interface Order {
+  id: number;
+  address: string;
+  createdAt: string;
+  deliveryMethod: string;
+  isReceived: boolean;
+  price: number;
+}
+
+export interface MakeOrderRequest {
   deliveryMethod: string;
   address: string;
+  price: number;
 }
 
 export const orderApi = rootApi.injectEndpoints({
   endpoints: (builder) => ({
-    makeOrder: builder.mutation({
-      query: () => ({
+    getOrders: builder.query<Order[], void>({
+      query: () => "/order",
+    }),
+    makeOrder: builder.mutation<string, MakeOrderRequest>({
+      query: (body) => ({
         url: "/order",
         method: "POST",
+        body,
       }),
+      invalidatesTags: ["CartItems"],
     }),
   }),
 });
+
+export const { useGetOrdersQuery, useMakeOrderMutation } = orderApi;

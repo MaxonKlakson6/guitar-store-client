@@ -16,3 +16,17 @@ export const userInitialValue = {
   deliveryAddress: "",
   secondDeliveryAddress: "",
 };
+
+export const orderForm = {
+  name: "",
+  surname: "",
+  phoneNumber: "",
+  email: "",
+  deliveryMethod: "pickUp",
+  deliveryAddress: "",
+};
+
+export const orderFormWithSignedIn = {
+  deliveryMethod: "pickUp",
+  address: "",
+};

@@ -55,7 +55,7 @@ const ProfileIcon = ({ navigateToProfile }: ProfileIconProps) => {
                 <div className={styleClasses.popoverListWrapper}>
                   <ul>
                     <li>
-                      <Link to={ROUTE_NAMES.NOT_FOUND}>Текущие заказы</Link>
+                      <Link to={ROUTE_NAMES.ORDERS}>Текущие заказы</Link>
                     </li>
                     <li>
                       <Link to={ROUTE_NAMES.FAVOURITE}>Избранные товары</Link>

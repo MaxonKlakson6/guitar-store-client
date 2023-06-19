@@ -177,7 +177,7 @@ const ProfileLayout = ({
               </button>
             </div>
             <div className={stylesClasses.rightColumn}>
-              <Link to={ROUTE_NAMES.NOT_FOUND}>Текущие заказы</Link>
+              <Link to={ROUTE_NAMES.ORDERS}>Текущие заказы</Link>
               <Link to={ROUTE_NAMES.FAVOURITE}>Избранные товары</Link>
               <Link to={ROUTE_NAMES.CART}>Корзина</Link>
             </div>

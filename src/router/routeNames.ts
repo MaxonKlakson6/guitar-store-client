@@ -5,5 +5,6 @@ export const ROUTE_NAMES = {
   CART: "/cart",
   FAVOURITE: "/favourite",
   PROFILE: "/profile",
+  ORDERS: "/orders",
   NOT_FOUND: "/not-found",
 };

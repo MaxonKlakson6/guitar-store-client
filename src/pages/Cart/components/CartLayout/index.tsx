@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
 import { Link } from "react-router-dom";
 
 import CartItem from "src/pages/Cart/components/CartItem";
@@ -6,6 +6,7 @@ import { CartItem as CartItemType } from "src/types/products";
 import { ROUTE_NAMES } from "src/router/routeNames";
 import emptyCartGif from "src/static/gifs/empty-cart.gif";
 import stylesClasses from "src/pages/Cart/components/CartLayout/styles.module.scss";
+import OrderModal from "src/components/OrderModal";
 
 interface CartLayoutProps {
   cartItems: CartItemType[];
@@ -28,8 +29,20 @@ const CartLayout = ({
   handleIncrementQuantity,
   handleDecrementQuantity,
 }: CartLayoutProps) => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  const handleToggleModal = () => setShowModal(!showModal);
+  const totalPrice = cartItems.reduce(
+    (totalPriceSum, { price, quantity }) => totalPriceSum + price * quantity,
+    0
+  );
   return (
     <div className={stylesClasses.cartWrapper}>
+      <OrderModal
+        show={showModal}
+        price={totalPrice}
+        onHide={handleToggleModal}
+      />
       {!isLoading && cartItems.length === 0 ? (
         <div className={stylesClasses.emptyCartBlock}>
           <h1>Корзина пуста</h1>
@@ -45,7 +58,10 @@ const CartLayout = ({
         <>
           <div className={stylesClasses.cartHeading}>
             <h1 className={stylesClasses.title}>Содержимое корзины</h1>
-            <button className={stylesClasses.makeOrderButton}>
+            <button
+              className={stylesClasses.makeOrderButton}
+              onClick={handleToggleModal}
+            >
               Оформить заказ
             </button>
           </div>
@@ -64,21 +80,15 @@ const CartLayout = ({
             ))}
           </div>
           <div className={stylesClasses.bottomBlock}>
-            <button className={stylesClasses.makeOrderButton}>
+            <button
+              className={stylesClasses.makeOrderButton}
+              onClick={handleToggleModal}
+            >
               Оформить заказ
             </button>
             <p className={stylesClasses.cartTotalPrice}>
               Итоговая цена:
-              <span>
-                {cartItems
-                  .reduce(
-                    (totalPriceSum, { price, quantity }) =>
-                      totalPriceSum + price * quantity,
-                    0
-                  )
-                  .toFixed(2)}{" "}
-                б.р.
-              </span>
+              <span>{totalPrice.toFixed(2)} б.р.</span>
             </p>
           </div>
         </>

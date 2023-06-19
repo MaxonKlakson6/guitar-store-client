@@ -1,0 +1,26 @@
+.wrapper {
+  padding: 50px;
+  display: flex;
+}
+
+.infoColumn {
+  margin-top: 35px;
+  flex-grow: 1;
+}
+
+.title {
+  font-family: PlexSans, sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+}
+
+.logo {
+  width: 400px;
+  margin-top: 200px;
+  margin-right: 100px;
+  align-self: flex-start;
+}
+
+.ordersWrapper {
+  margin-top: 49px;
+}
