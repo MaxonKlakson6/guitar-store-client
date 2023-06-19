@@ -22,11 +22,17 @@ const OrderWithSignIn = ({ onSubmit }: OrderWithSignInProps) => {
   const { values, handleChange, handleSubmit, setFieldValue } = useFormik({
     initialValues: orderFormWithSignedIn,
     onSubmit: () => {
-      onSubmit({
-        deliveryMethod: values.deliveryMethod,
-        address:
-          values.deliveryMethod === "pickUp" ? pickUpAddress : values.address,
-      });
+      if (values.deliveryMethod === "delivery" && values.deliveryMethod) {
+        onSubmit({
+          deliveryMethod: values.deliveryMethod,
+          address: values.address,
+        });
+      } else if (values.deliveryMethod === "pickUp") {
+        onSubmit({
+          deliveryMethod: values.deliveryMethod,
+          address: pickUpAddress,
+        });
+      }
     },
   });
 
